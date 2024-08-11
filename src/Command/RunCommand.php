@@ -162,6 +162,9 @@ final class RunCommand extends BaseCommand
     /** @var string */
     private const OPTION_DRY_RUN = 'dry-run';
 
+    /** @var string */
+    private const OPTION_FORCE_ERROR = 'force-error';
+
     protected function configure(): void
     {
         $this
@@ -372,6 +375,12 @@ final class RunCommand extends BaseCommand
                 null,
                 InputOption::VALUE_NONE,
                 'Will not apply the mutations',
+            )
+            ->addOption(
+                self::OPTION_FORCE_ERROR,
+                null,
+                InputOption::VALUE_NONE,
+                'Will return non-zero exit code if there is a RuntimeError',
             )
         ;
     }
